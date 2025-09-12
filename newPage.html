@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Tab</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: sans-serif; }
+
+  body {
+    background-image: url('https://i.postimg.cc/RhXqrrBd/Whats-App-Image-2025-09-12-at-21-48-21.jpg'); /* main wallpaper */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 3vh;
+  }
+
+  /* === LEFT SIDE: BOOKMARK GRID === */
+  .bookmark-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 2.5vh, 35px);
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: clamp(30px, 3vw, 50px);
+    width: 35%;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.5vh, 25px);
+  }
+
+  .category-header {
+    font-size: clamp(1em, 1.3vw, 1.3em);
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    padding-bottom: clamp(6px, 0.8vh, 10px);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .bookmark-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(90px, 110px));
+    gap: clamp(12px, 1.5vw, 25px);
+  }
+
+  .bookmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    width: 100%;
+    background-color: rgba(200,200,200,0.1);
+    border-radius: clamp(12px, 1.5vw, 20px);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .bookmark img {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+  }
+  .bookmark:hover {
+    transform: scale(1.1);
+    background-color: rgba(200,200,200,0.5);
+  }
+
+  /* === RIGHT SIDE: GREETING PANEL === */
+  .info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    padding-right: clamp(30px, 4vw, 60px);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    width: 45%;
+    color: white;
+  }
+  .greeting {
+    font-size: clamp(1em, 1.3vw, 1.4em);
+    margin-bottom: clamp(10px, 1.5vh, 20px);
+    text-align: center;
+  }
+  .clock {
+    font-size: clamp(3.8em, 4.5vw, 5.8em); 
+    margin-bottom: clamp(15px, 2vh, 30px);
+    text-align: center;
+  }
+  .quote {
+    font-size: clamp(1em, 1.3vw, 1.4em);
+    max-width: clamp(300px, 35vw, 500px);
+    line-height: 1.4;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- LEFT: BOOKMARK ICON GRID -->
+<div class="bookmark-grid">
+  <!-- PERSONAL -->
+  <div class="category">
+    <div class="category-header">Personal</div>
+    <div class="bookmark-container">
+      <a href="https://animekai.bz" class="bookmark">
+        <img src="https://animekai.bz/assets/uploads/37585a39fe8c8d8fafbc397bfbf5374ecac859ea6a0288a6da2c61f5.png" alt="Anime">
+      </a>
+      <a href="https://reddit.com" class="bookmark">
+        <img src="https://www.redditstatic.com/shreddit/assets/favicon/192x192.png" alt="Reddit">
+      </a>
+      <a href="https://github.com" class="bookmark">
+        <img src="https://i.postimg.cc/Bv46vQnp/github.png" alt="GitHub">
+      </a>
+      <a href="https://chat.openai.com" class="bookmark">
+        <img src="https://cdn.oaistatic.com/assets/favicon-l4nq08hd.svg" alt="ChatGPT">
+      </a>
+      <a href="https://bitcine.app" class="bookmark">
+        <img src="https://bitcine.app/favicon.ico" alt="BitCine">
+      </a>
+      <a href="https://odysee.com" class="bookmark">
+        <img src="https://odysee.com/public/favicon_128.png" alt="Odysee">
+      </a>
+      <a href="https://notion.so" class="bookmark">
+        <img src="https://www.notion.so/images/favicon.ico" alt="Notion">
+      </a>
+      <a href="https://web.whatsapp.com" class="bookmark">
+        <img src="https://static.whatsapp.net/rsrc.php/v4/yP/r/rYZqPCBaG70.png" alt="Whatsapp">
+      </a>
+    </div>
+  </div>
+
+  <!-- SCHOOL -->
+  <div class="category">
+    <div class="category-header">School</div>
+    <div class="bookmark-container">
+      <a href="https://m365.cloud.microsoft/apps/" class="bookmark">
+        <img src="https://res.cdn.office.net/officehub/images/content/images/favicon_copilot-4370172aa6.ico" alt="M365">
+      </a>
+      <a href="https://eduvidual.at" class="bookmark">
+        <img src="https://eduvidual.at/favicon.ico" alt="EduVidual">
+      </a>
+      <a href="https://webuntis.com" class="bookmark">
+        <img src="https://i.postimg.cc/SN13sZQv/webuntis.png" alt="WebUntis">
+      </a>
+      <a href="https://khanacademy.org" class="bookmark">
+        <img src="https://i.postimg.cc/rFDghqcf/khanacademy.png" alt="Khan Academy">
+      </a>
+      <a href="https://coursera.org" class="bookmark">
+        <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-76x76.png" alt="Coursera">
+      </a>
+      <a href="https://edx.org" class="bookmark">
+        <img src="https://www.edx.org/favicon.ico" alt="edX">
+      </a>
+      <a href="https://replit.com" class="bookmark">
+        <img src="https://duckduckgo.com/i/b91d4dd2d474a339.png" alt="Replit">
+      </a>
+      <a href="https://codepen.io" class="bookmark">
+        <img src="https://i.postimg.cc/LX7NtshK/codepen.png" alt="CodePen">
+      </a>
+      <a href="https://jsfiddle.net" class="bookmark">
+        <img src="https://i.postimg.cc/5N5S0g5M/jsfiddle.png" alt="JSFiddle">
+      </a>
+      <a href="https://leetcode.com" class="bookmark">
+        <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" alt="LeetCode">
+      </a>
+      <a href="https://hackerrank.com" class="bookmark">
+        <img src="https://i.postimg.cc/gc8vSsT6/hackerrank.png" alt="HackerRank">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT: GREETING PANEL -->
+<div class="info-panel">
+  <div class="greeting">How ya doin' Alex?</div>
+  <div class="clock" id="clock">--:--</div>
+  <div class="quote" id="quote">Loading quote...</div>
+</div>
+
+<script>
+  // === CLOCK ===
+  function updateClock() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,'0');
+    const mm = String(now.getMinutes()).padStart(2,'0');
+    document.getElementById('clock').textContent = `${hh}:${mm}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // === RANDOM QUOTES ===
+  let quotes = [];
+  async function fetchQuotes() {
+    try {
+      const res = await fetch('https://type.fit/api/quotes');
+      quotes = await res.json();
+      showRandomQuote();
+    } catch(e) {
+      console.error('Quote fetch failed', e);
+      document.getElementById('quote').textContent = "Think different, think smart!";
+    }
+  }
+
+  function showRandomQuote() {
+    if(quotes.length === 0) return;
+    const q = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').textContent = `"${q.text}"${q.author ? " — " + q.author : ""}`;
+  }
+
+  // Update quote every 30 minutes
+  fetchQuotes();
+  setInterval(showRandomQuote, 30 * 60 * 1000);
+</script>
+
+</body>
+</html>
