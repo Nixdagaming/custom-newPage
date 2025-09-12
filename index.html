@@ -195,29 +195,30 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // === RANDOM QUOTES ===
-  let quotes = [];
-  async function fetchQuotes() {
+  // === RANDOM QUOTES (ZenQuotes API) ===
+  async function fetchQuote() {
     try {
-      const res = await fetch('https://type.fit/api/quotes');
-      quotes = await res.json();
-      showRandomQuote();
-    } catch(e) {
-      console.error('Quote fetch failed', e);
-      document.getElementById('quote').textContent = "Think different, think smart!";
+      const res = await fetch("https://zenquotes.io/api/random");
+      if (!res.ok) throw new Error("Network response was not ok");
+      const data = await res.json();
+      
+      // Extract the quote and author from ZenQuotes
+      const quote = `"${data[0].q}" — ${data[0].a}`;
+      document.getElementById("quote").textContent = quote;
+    } catch (e) {
+      console.error("Quote fetch failed", e);
+      document.getElementById("quote").textContent = "Think different, think smart!";
     }
   }
-
-  function showRandomQuote() {
-    if(quotes.length === 0) return;
-    const q = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById('quote').textContent = `"${q.text}"${q.author ? " — " + q.author : ""}`;
-  }
-
+  
+  // Load first quote immediately
+  fetchQuote();
+  
   // Update quote every 30 minutes
-  fetchQuotes();
-  setInterval(showRandomQuote, 30 * 60 * 1000);
+  setInterval(fetchQuote, 30 * 60 * 1000);
+
 </script>
 
 </body>
 </html>
+
