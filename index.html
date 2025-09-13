@@ -40,12 +40,22 @@
     color: white;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     padding-bottom: clamp(6px, 0.8vh, 10px);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    position: relative; /* needed for ::after */
+  }
+
+  .category-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 80%; /* or use a smaller value like 60% if you want */
+    background-color: rgba(255,255,255,0.3);
   }
 
   .bookmark-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(90px, 110px));
+    grid-template-columns: repeat(5, minmax(90px, 110px));
     gap: clamp(12px, 1.5vw, 25px);
   }
 
@@ -98,6 +108,56 @@
     max-width: clamp(300px, 35vw, 500px);
     line-height: 1.4;
     text-align: center;
+  }
+  .search-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .search-center input {
+    width: clamp(200px, 40vw, 400px);
+    padding: 10px 15px;
+    border-radius: 8px;
+    /* border: 1px solid rgba(255,255,255,0.4); */
+    border: 0px solid rgba(255,255,255,0.4);
+    background: rgba(10,10,10,0.2);
+    color: white;
+    outline: none;
+    font-size: 1.1em;
+    text-align: center;
+  }
+
+  .search-center input::placeholder {
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+  }
+
+  .search-center button {
+    background: rgba(10,10,10,0.2);
+    /* border: 1px solid rgba(255,255,255,0.4); */
+    border: 0px solid rgba(255,255,255,0.4);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-center button:hover {
+    background: rgba(255,255,255,0.2);
+  }
+  .search-center button img {
+    width: 20px;   /* Change this to make the icon bigger or smaller */
+    height: 20px;
+    object-fit: contain;
+    filter: invert(1); /* Turns black icons white */
   }
 </style>
 </head>
@@ -175,6 +235,14 @@
       </a>
     </div>
   </div>
+</div>
+
+<!-- Centered Search Bar -->
+<div class="search-center">
+  <input type="text" id="search" placeholder="Search the web..." />
+  <button id="search-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="Search">
+  </button>
 </div>
 
 <!-- RIGHT: GREETING PANEL -->
@@ -277,9 +345,26 @@
   // Show one immediately
   showRandomQuote();
 
+  function doSearch() {
+    const query = document.getElementById('search').value.trim();
+    if (query) {
+      window.location.href = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+    }
+  }
+
+  document.getElementById('search-btn').addEventListener('click', doSearch);
+  document.getElementById('search').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      doSearch();
+    }
+  })
+
+  // Auto-focus the search bar when the page loads
+  window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("search").focus();
+  });
 </script>
 
 </body>
 </html>
-
 
